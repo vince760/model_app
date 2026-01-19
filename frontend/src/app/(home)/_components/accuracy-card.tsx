@@ -30,7 +30,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
 
   React.useEffect(() => {
     (async () => {
-      const res = await fetch(`${process.env.API_BASE}metadata`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}metadata`);
       if (!res.ok) throw new Error("Failed to load metadata");
       setMeta(await res.json());
     })().catch(console.error);
@@ -53,17 +53,20 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
 
   const predictModel = async () => {
     try {
-      const response = await fetch(`${process.env.API_BASE}predict`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}predict`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            year: selectedYearValue,
+            platform: selectedPlatformValue,
+            genre: selectedGenreValue,
+          }),
         },
-        body: JSON.stringify({
-          year: selectedYearValue,
-          platform: selectedPlatformValue,
-          genre: selectedGenreValue,
-        }),
-      });
+      );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
