@@ -17,8 +17,6 @@ type PredictResponse = {
   year_out_of_training_range: boolean;
 };
 
-
-
 export function AccuracyCard({ accuracy }: { accuracy: string }) {
   const [meta, setMeta] = React.useState<Meta | null>(null);
   const [selectedYear, setSelectedYear] = React.useState(new Set(["Year"]));
@@ -54,7 +52,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
 
   const predictModel = async () => {
     try {
-      const response = await fetch(`${API_BASE}/predict`, {
+      const response = await fetch(`${process.env.API_BASE}/predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,16 +71,15 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
       const data = await response.json();
 
       setResult(data as PredictResponse);
-      
     } catch (error) {
       console.error("Error during prediction:", error);
     }
   };
 
-   const pct =
-     result?.probability_hit == null
-       ? null
-       : Math.round(result.probability_hit * 1000) / 10;
+  const pct =
+    result?.probability_hit == null
+      ? null
+      : Math.round(result.probability_hit * 1000) / 10;
   return (
     <div className="col-span-12 rounded-[10px] bg-white py-6 text-center shadow-1 dark:bg-gray-dark">
       <h2 className="text-body-2xl mb-5 px-7.5 font-bold text-dark dark:text-white">
