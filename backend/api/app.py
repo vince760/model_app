@@ -33,7 +33,7 @@ with open(META_PATH, "rb") as f:
 def health():
     return jsonify({"ok": True})
 
-@app.route("/health", methods=["GET"])
+@app.route("/metadata", methods=["GET"])
 def get_metadata():
     y_min = meta.get("year_min")
     y_max = meta.get("year_max")
