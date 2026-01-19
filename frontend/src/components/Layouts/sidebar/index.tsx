@@ -25,21 +25,20 @@ export function Sidebar() {
   };
 
   useEffect(() => {
-    // Keep collapsible open, when it's subpage is active
-    NAV_DATA.some((section) => {
-      return section.items.some((item) => {
-        return item.items.some((subItem) => {
-          if (subItem === pathname) {
+    // Keep collapsible open when its subpage is active
+    NAV_DATA.some((section) =>
+      section.items.some((item) =>
+        item.items.some((subItem) => {
+          if (subItem.url === pathname) {
             if (!expandedItems.includes(item.title)) {
               toggleExpanded(item.title);
             }
-
-            // Break the loop
-            return true;
+            return true; // break out
           }
-        });
-      });
-    });
+          return false;
+        }),
+      ),
+    );
   }, [pathname]);
 
   return (
@@ -128,13 +127,13 @@ export function Sidebar() {
                                 role="menu"
                               >
                                 {item.items.map((subItem) => (
-                                  <li key={subItem} role="none">
+                                  <li key={subItem.url} role="none">
                                     <MenuItem
                                       as="link"
-                                      href={subItem}
-                                      isActive={pathname === subItem}
+                                      href={subItem.url}
+                                      isActive={pathname === subItem.url}
                                     >
-                                      <span>{subItem}</span>
+                                      <span>{subItem.title}</span>
                                     </MenuItem>
                                   </li>
                                 ))}

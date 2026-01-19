@@ -1,7 +1,26 @@
-import { url } from "inspector";
+import type { ComponentType, SVGProps } from "react";
 import * as Icons from "../icons";
 
-export const NAV_DATA = [
+type IconType = ComponentType<SVGProps<SVGSVGElement>>;
+
+export type NavSubItem = {
+  title: string;
+  url: string;
+};
+
+export type NavItem = {
+  title: string;
+  url?: string; // leaf item uses url
+  icon: IconType;
+  items: NavSubItem[]; // dropdown items
+};
+
+export type NavSection = {
+  label: string;
+  items: NavItem[];
+};
+
+export const NAV_DATA: NavSection[] = [
   {
     label: "Model Menu",
     items: [
@@ -11,39 +30,6 @@ export const NAV_DATA = [
         icon: Icons.HomeIcon,
         items: [],
       },
-      // {
-      //   title: "KNN",
-      //   url: "/calendar",
-      //   icon: Icons.Calendar,
-      //   items: [],
-      // },
-      // {
-      //   title: "Linear SVM",
-      //   url: "/profile",
-      //   icon: Icons.User,
-      //   items: [],
-      // },
-      // {
-      //   title: "Kernel SVM (RBF)",
-      //   icon: Icons.Alphabet,
-      //   items: [],
-      // },
-      // {
-      //   title: "Gaussian",
-      //   url: "/tables",
-      //   icon: Icons.Table,
-      //   items: [],
-      // },
-      // {
-      //   title: "Decision Tree",
-      //   icon: Icons.Alphabet,
-      //   items: [],
-      // },
-      // {
-      //   title: "Random Forest",
-      //   icon: Icons.Alphabet,
-      //   items: [],
-      // },
     ],
   },
 ];

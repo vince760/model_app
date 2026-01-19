@@ -10,7 +10,10 @@ MODEL_PATH = BASE_DIR / "model.pkl"
 META_PATH = BASE_DIR / "metadata.pkl"
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": [
+    "https://YOUR-VERCEL-SITE.vercel.app",
+    "http://localhost:3000"
+]}})
 
 # Load artifacts once at startup
 if not MODEL_PATH.exists():
