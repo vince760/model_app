@@ -4,16 +4,17 @@ import pickle
 import pandas as pd
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import re
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 MODEL_PATH = BASE_DIR / "model.pkl"
 META_PATH = BASE_DIR / "metadata.pkl"
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": [
-    "https://model-app-t5kc-4raiw5g1i-vince760s-projects.vercel.app/",
-    "http://localhost:3000"
-]}})
+CORS(app, origins=[
+    re.compile(r"^https://model-app-.*-vince760s-projects\.vercel\.app$"),
+    "http://localhost:3000",
+])
 
 # Load artifacts once at startup
 if not MODEL_PATH.exists():
