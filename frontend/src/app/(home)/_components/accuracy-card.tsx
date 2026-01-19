@@ -30,7 +30,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
 
   React.useEffect(() => {
     (async () => {
-      const res = await fetch(`${process.env.API_BASE}/metadata`);
+      const res = await fetch(`${process.env.API_BASE}metadata`);
       if (!res.ok) throw new Error("Failed to load metadata");
       setMeta(await res.json());
     })().catch(console.error);
@@ -53,7 +53,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
 
   const predictModel = async () => {
     try {
-      const response = await fetch(`${process.env.API_BASE}/predict`, {
+      const response = await fetch(`${process.env.API_BASE}predict`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

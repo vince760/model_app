@@ -10,7 +10,7 @@ export default async function AccuracyCardContainer({
 }: {
   accuracy: string;
 }) {
-  const res = await fetch(`${API_BASE}/metadata`, { cache: "no-store" });
+  const res = await fetch(`${API_BASE}metadata`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to load metadata");
 
   const meta = (await res.json()) as Meta;

@@ -91,3 +91,7 @@ backend/**/*.feather
 **/env/
 /backend/venv/
 .env
+
+# allow committed model artifacts
+!backend/model.pkl
+!backend/metadata.pkl
