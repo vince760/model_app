@@ -29,11 +29,11 @@ with open(META_PATH, "rb") as f:
     print("META KEYS:", list(meta.keys()))
     print("year_min/year_max:", meta.get("year_min"), meta.get("year_max"))
 
-@app.get("/health")
+@app.route("/health", methods=["GET"])
 def health():
     return jsonify({"ok": True})
 
-@app.get("/metadata")
+@app.route("/health", methods=["GET"])
 def get_metadata():
     y_min = meta.get("year_min")
     y_max = meta.get("year_max")
@@ -50,7 +50,7 @@ def get_metadata():
         "genres": list(genres),
     })
 
-@app.post("/predict")
+@app.route("/predict", methods=["POST"])
 def predict():
     payload = request.get_json(silent=True) or {}
 
