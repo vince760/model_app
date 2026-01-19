@@ -11,7 +11,7 @@ META_PATH = BASE_DIR / "metadata.pkl"
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": [
-    "https://YOUR-VERCEL-SITE.vercel.app",
+    "https://model-app-t5kc-4raiw5g1i-vince760s-projects.vercel.app/",
     "http://localhost:3000"
 ]}})
 
