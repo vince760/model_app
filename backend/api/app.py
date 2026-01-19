@@ -27,8 +27,7 @@ with open(MODEL_PATH, "rb") as f:
 
 with open(META_PATH, "rb") as f:
     meta = pickle.load(f)   # renamed (was `metadata`)
-    print("META KEYS:", list(meta.keys()))
-    print("year_min/year_max:", meta.get("year_min"), meta.get("year_max"))
+    
 
 @app.route("/health", methods=["GET"])
 def health():
