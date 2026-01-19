@@ -15,5 +15,5 @@ export default async function AccuracyCardContainer({
 
   const meta = (await res.json()) as Meta;
 
-  return <AccuracyCard accuracy={accuracy} />;
+  return <AccuracyCard />;
 }

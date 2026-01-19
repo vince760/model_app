@@ -18,7 +18,7 @@ type PredictResponse = {
   year_out_of_training_range: boolean;
 };
 
-export function AccuracyCard({ accuracy }: { accuracy: string }) {
+export function AccuracyCard() {
   const [meta, setMeta] = React.useState<Meta | null>(null);
   const [selectedYear, setSelectedYear] = React.useState(new Set(["Year"]));
   const [selectedPlatform, setSelectedPlatform] = React.useState(
@@ -102,9 +102,10 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
       : Math.round(result.probability_hit * 1000) / 10;
   return (
     <div className="col-span-12 rounded-[10px] bg-white py-6 text-center shadow-1 dark:bg-gray-dark">
-      <h2 className="text-body-2xl mb-5 px-7.5 font-bold text-dark dark:text-white">
-        Accuracy: {accuracy}
-      </h2>
+      <p className="text-body-2xl mb-5 px-7.5 text-dark dark:text-white">
+        {`Goal: Predict if a video game will be a "hit" based on Year, Platform,
+        and Genre (Hit = Sales > 1 million units sold)`}
+      </p>
       {/* Dropdown for selecting year */}
       <div className="mt-4 flex w-full items-center">
         <div className="flex-1" />
