@@ -33,12 +33,7 @@ export default function Home({ searchParams }: PropsType) {
         {/* <OverviewCardsGroup /> */}
       </Suspense>
       <div className="mt-4 flex items-start gap-4">
-        <Button
-          shape="rounded"
-          variant="primary"
-          label="Get Model Accuracy"
-          onClick={handleGetModelAccuracy}
-        />
+      
 
         <div className="flex-1 items-center">
           <AccuracyCard accuracy={accuracy} />

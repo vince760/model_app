@@ -1,0 +1,93 @@
+# -------------------------------------------------
+# OS / Editor
+# -------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+*.iml
+
+# -------------------------------------------------
+# Logs
+# -------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -------------------------------------------------
+# Frontend (Next.js / React)
+# -------------------------------------------------
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/.vercel/
+frontend/coverage/
+frontend/.env
+frontend/.env.*.local
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Build artifacts
+frontend/dist/
+frontend/build/
+
+# -------------------------------------------------
+# Backend (Python)
+# -------------------------------------------------
+backend/**/__pycache__/
+backend/**/*.py[cod]
+backend/**/.pytest_cache/
+backend/**/.mypy_cache/
+backend/**/.ruff_cache/
+backend/**/.coverage
+backend/**/coverage.xml
+backend/**/.tox/
+backend/**/.venv/
+backend/**/venv/
+backend/**/env/
+backend/**/.env
+backend/**/.env.*
+
+# Flask
+backend/**/instance/
+backend/**/.flaskenv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# -------------------------------------------------
+# Data / model artifacts (usually should NOT be committed)
+# -------------------------------------------------
+backend/**/*.pkl
+backend/**/*.joblib
+backend/**/*.csv
+backend/**/*.parquet
+backend/**/*.feather
+
+# If you DO want to commit specific artifacts, unignore them here:
+#!backend/model.pkl
+#!backend/metadata.pkl
+
+# -------------------------------------------------
+# Misc
+# -------------------------------------------------
+*.sqlite3
+*.db
+
+
+**/venv/
+**/.venv/
+**/env/
+/backend/venv/
+.env
