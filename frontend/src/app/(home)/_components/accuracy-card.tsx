@@ -4,6 +4,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
+  SharedSelection,
 } from "@heroui/react";
 import React from "react";
 
@@ -76,6 +77,22 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
     }
   };
 
+  const onYearSelectionChange = (keys: SharedSelection) => {
+    // for single selection, `currentKey` is what you want
+    const key = keys.currentKey;
+    if (key) setSelectedYear(new Set([String(key)]));
+  };
+
+  const onPlatformSelectionChange = (keys: SharedSelection) => {
+    // for single selection, `currentKey` is what you want
+    const key = keys.currentKey;
+    if (key) setSelectedPlatform(new Set([String(key)]));
+  };
+  const onGenreSelectionChange = (keys: SharedSelection) => {
+    // for single selection, `currentKey` is what you want
+    const key = keys.currentKey;
+    if (key) setSelectedGenre(new Set([String(key)]));
+  };
   const pct =
     result?.probability_hit == null
       ? null
@@ -102,7 +119,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
               selectedKeys={selectedYear}
               selectionMode="single"
               variant="flat"
-              onSelectionChange={setSelectedYear}
+              onSelectionChange={onYearSelectionChange}
             >
               {meta && meta.years
                 ? meta.years.map((y) => (
@@ -126,7 +143,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
               selectedKeys={selectedPlatform}
               selectionMode="single"
               variant="flat"
-              onSelectionChange={setSelectedPlatform}
+              onSelectionChange={onPlatformSelectionChange}
             >
               {meta && meta.platforms
                 ? meta.platforms.map((p) => (
@@ -150,7 +167,7 @@ export function AccuracyCard({ accuracy }: { accuracy: string }) {
               selectedKeys={selectedGenre}
               selectionMode="single"
               variant="flat"
-              onSelectionChange={setSelectedGenre}
+              onSelectionChange={onGenreSelectionChange}
             >
               {meta && meta.genres
                 ? meta.genres.map((g) => (
